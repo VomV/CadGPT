@@ -11,7 +11,7 @@ radius = 0.5 / 2
 block = BRepPrimAPI_MakeBox(L, W, H).Shape()
 
 # Create and subtract holes at each corner
-corner_points = [(0, 0), (L, 0), (L, W), (0, W)]
+corner_points = [(0.5, 0.5), (L-0.5, 0.5), (L-0.5, W-0.5), (0.5, W-0.5)]
 for x, y in corner_points:
     cylinder = BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(x, y, 0), gp_Dir(0, 0, 1)), radius, H).Shape()
     block = BRepAlgoAPI_Cut(block, cylinder).Shape()
